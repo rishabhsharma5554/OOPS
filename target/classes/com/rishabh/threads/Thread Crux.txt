@@ -1,0 +1,95 @@
+There are several important concepts to understand when working with threads in Java:
+
+1. Thread states: A thread can be in one of several states, 
+	such as new, runnable, running, blocked, or terminated. 
+	Understanding the different states and how they transition 
+	between each other is important for understanding the behavior of threads.
+	
+2. Thread scheduling: Java uses a built-in scheduler to determine 
+	which thread should be running at any given time. Understanding how 
+	the scheduler works and how the priorities of threads affect scheduling 
+	is important for creating efficient and responsive multithreaded applications.
+	
+3. Synchronization: When multiple threads are accessing shared data, 
+	synchronization is necessary to ensure that the data remains consistent 
+	and that there are no race conditions. Java provides several mechanisms 
+	for synchronizing threads, such as the synchronized keyword, locks, 
+	and atomic variables.
+	
+4. Inter-thread communication: Threads often need to communicate 
+	with each other, for example, one thread may need to wait for 
+	another thread to complete a task. Java provides several mechanisms 
+	for inter-thread communication, such as wait() and notify() methods, 
+	and the java.util.concurrent package.
+	
+5. Thread-safe data structures: When working with multiple threads, 
+	it's important to use data structures that are designed to be 
+	used by multiple threads without the need for explicit synchronization. 
+	Java provides several thread-safe data structures, 
+	such as 
+			java.util.concurrent.ConcurrentHashMap, 
+			java.util.concurrent.CopyOnWriteArrayList,
+			java.util.concurrent.BlockingQueue.
+			
+6. The Executor Framework: The Executor framework provides a more 
+	efficient way of managing and executing threads. 
+	It allows you to abstract away the underlying details 
+	of creating and managing threads, and to focus on the 
+	task at hand. 
+	
+	It also provides a way to manage the lifecycle of threads and 
+	to handle exceptions that are thrown by tasks.
+	
+===============================================XXX==========================================
+
+# Imp Methods
+
+1. start(): This method is used to start the execution of a new thread. 
+	The thread's run() method is called, and the thread is placed in the runnable state.
+2. run(): This method contains the code that will be executed by the thread. 
+	It should be overridden when creating a new thread by extending the Thread class or implementing the Runnable interface.
+3. join(): This method allows a thread to wait for another thread to complete 
+	its execution. The calling thread will be blocked until the specified thread completes.
+4. sleep(long milliseconds): This method causes the current thread to suspend 
+	its execution for the specified number of milliseconds.
+5. yield(): This method causes the current thread to give up its current 
+	time slice, allowing other threads to execute.
+6. interrupt(): This method is used to interrupt a thread that is blocked 
+	or in the waiting state. The thread's interrupted status is set, which 
+	can be checked using the isInterrupted() method.
+7. isAlive(): This method returns true if the thread is in the runnable or 
+	running state and false if the thread is terminated.
+8. setPriority(int newPriority): This method is used to set the priority of 
+	a thread. Higher priority threads will be given more time to execute 
+	by the scheduler.
+9. getPriority(): This method is used to get the priority of a thread.
+10.getName() and setName(String name): These methods are used to 
+	get or set the name of a thread, which can be useful for debugging and identifying threads.
+	
+	
+===============================================XXX==========================================
+Synchronzation 
+
+In Java, synchronization is used to ensure that multiple threads do not 
+concurrently execute a critical section of code that accesses shared data. 
+There are several ways to implement synchronization in Java:
+
+1. Using the synchronized keyword: The synchronized keyword can 
+	be used to mark a method or a block of code as a critical section. 
+	Only one thread can execute a synchronized method or block of code 
+
+2. Using locks: The java.util.concurrent.locks package provides a more 
+	flexible way to synchronize access to shared data. The Lock interface 
+	provides methods for acquiring and releasing locks, and the ReentrantLock 
+	class is a common implementation of this interface.
+
+3. Using the volatile keyword: The volatile keyword can be used to mark a 
+	variable as shared, ensuring that all threads see the most recent value of the 
+	variable. However, it only works for variables and not for objects, 
+	and it does not provide the same level of protection as the synchronized 
+	keyword or locks. 
+	
+4. Using the Atomic classes: The java.util.concurrent.atomic package provides 
+	a set of classes for performing atomic operations on variables. 
+	These classes provide a way to perform operations on variables 
+	in a thread-safe manner without the need for explicit synchronization
